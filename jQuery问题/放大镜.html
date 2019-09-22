@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>放大镜</title>
+    <script src="../js/jquery-3.0.0.js"></script>
+    <script src="../js/magnifying-glass2.0.1.js"></script>
+</head>
+<body>
+    <div class="box"></div>
+    <script>
+        $(".box").fangda($(".box"),{      //($(".goods_img")为放置原图、小图、放大图的外层盒子
+        minPlace: 'bottom',                   //小图位置、left、top、right、默认bottom
+                         
+        // position:"inner",                     //放大图位置,不写默认在原图旁边，inner为原图内展示
+        
+        fangda : [{                           //放大盒子属性，可写类名，样式
+                    width:400,
+                    height:400,
+                    // left:0,
+                    // top:0,
+        }],
+        big   : [{                              //原图盒子属性，可写类名，样式,放置的图片数组
+                    width:400,
+                    height:400,
+                    overflow:"hidden",
+        }],
+        min  : [{                               //小图片盒子属性，宽高为小图的，可写类名，样式,放置的图片数组
+                    width:100,
+                    height:100, 
+                    class: "kkkk"  ,     
+        }],
+        move  : [{   
+                   width:100,
+                   height:100,                             //滑动快属性，宽高为小图的，可写类名，样式,放置的图片数组
+                   background:"#ccc",
+                   display:"block",
+                   opacity:0.3,
+        }],
+        imgsrc: ["../images/g1.jpg","../images/g2.jpg","../images/g3.jpg","../images/g4.jpg"],            //放置的图片数组,优先级低于big[]和min[]
+    });
+
+
+    </script>
+</body>
+</html>

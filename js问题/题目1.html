@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //1.str = 你好 {0},今天是{1}年{2}月{3}号,星期{4}   arr=[傻呆, 2019, 8, 12, 一]
+    // 编写一个函数,输出"你好傻呆,今天是2019年8月12号,星期一"
+    var str = "你好 {0},今天是{1}年{2}月{3}号,星期{4}" 
+    var arr=["傻呆", 2019, 8, 12, "一"]
+
+    let jiegou = hello(str,arr)
+    console.log(jiegou)
+    
+    function hello(string,brr){
+        let res = str.replace(/\{(\d{1})\}/ig,"$1").split("")
+        for(var i=0;i<res.length;i++){
+              for(var j=0;j<brr.length;j++){
+                if(Number(res[i])===j && res[i]!=" "){
+                    // console.log(i)
+                    res[i] = brr[j]
+                }
+            }
+        }
+      res = res.join("")
+    return res
+    }
+
+
+    //2.url = http://163.com/idx/#page?i=20&q=sfdsf&sd=kndgk 
+    //编写一个函数,输出一个数组arr,  数组中的数据,第一个为URL中的哈希 , 接下来每一个为查询字符串和值  顺序按照URL中的顺序一致
+    url = "http://163.com/idx/#page?i=20&q=sfdsf&sd=kndgk"
+    ur = "http://163.com/idx/#page?username=guo&age=18&sex=nan"
+    function two (zrr){
+        let res =zrr.split("#")[1].split("?")[1].split("&")
+        let br = res.map(item=>{
+            let yrr = item.split("=")
+            return {[yrr[0]]:yrr[1]}
+        
+        })
+        br.unshift(url.split("#")[1].split("?")[0])
+        console.log(br)
+    }
+    two(ur);
+
+    crr=["l","l","l"]
+    let judge = crr.every(item=>item=="l")
+    console.log("judge",judge)
+
+    console.log(void 0 == null)        //true
+    console.log(void 0 == undefined)   //true
+    console.log(void 0 ===  null)      //false
+    console.log(void 0 === undefined)  //true
+    // js的void("xxx")返回值永远为undefined
+    // null == undefined               //true
+    // null === undefined              //false
+    </script>
+</body>
+</html>

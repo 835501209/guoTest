@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 实现双向绑定输入框和对象属性data.val -->
+    <input type="text" class="input">
+    <button onclick="dianji()">
+        <!-- 点击获取data.val的值 -->
+        点位
+    </button>
+    <script>
+        let input = document.querySelector(".input")   
+        let data={
+            val :''
+        }
+
+        // let str = ''
+        Object.defineProperty(data,'val',{
+            get(){
+                return input.value
+            },
+            set(v){
+               input.value =v
+            }
+        })
+        function dianji (){
+            console.log(data.val)
+        }
+    </script>
+</body>
+</html>

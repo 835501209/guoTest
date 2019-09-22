@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../js/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      let  guo = new Vue({
+        data:{
+            num:1
+        },
+        watch:{
+            //监听实例属性
+            num:function(to,from){
+                console.log("num",to,from)
+                // 当实例属性num有修改时触发这个函数
+            },
+            $route:function(to,from){
+                // 监听到动态路由的改变
+            }
+        },
+
+        // beforeRouteUpdate(to,from,next){
+        //     // 权限管理：当前页面必须从某个页面跳转过来才能跳转
+        //     if(from.path == '/home'){
+        //         next();
+        //     }
+        // }
+    })
+    
+    
+    </script>
+</body>
+</html>

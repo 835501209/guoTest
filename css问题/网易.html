@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    url = "ww.weibo.com//#/index?ape=2&name=3&age=4"
+    // var reg = /(?<=\#\S+)/ig
+    var str = url.split("#")[1]
+    // console.log(str)
+    var res=[];
+    var str2 = str.split("?")[1]
+    res = str2.split("&")
+    res = res.map(item=>{
+        var i = item.split("=");
+        var obj = {};
+        obj[i[0]]= i[1];
+        return  obj;
+    })
+    res.unshift(str.split("?")[0])
+    console.log(res)
+    // return res
+    
+    
+    </script>
+</body>
+</html>

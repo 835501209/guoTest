@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>在面向对象软件设计过程中针对特定问题的优雅而简洁的解决方案</div>
+    <script>
+        // =================  工厂模式：将new的操作单独封装  ==================  //
+
+        //1.简单工厂模式，传入属性值返回响应的属性对象
+        function production(name,age,sex){
+            var obj = {name,age,sex}
+            return obj
+        }
+        let p1 = production("dc",22,"nan")
+        console.log("简单工厂模式",p1)//生产结果
+        
+
+        //2.进阶生产模式，使用ES6的类来实现
+        class shengchang{
+            constructor(){
+                
+            }
+            init(data){
+                this.data = data;
+                return this.data
+            }
+        }
+        let p2 = new shengchang ()
+        console.log("类的工厂模式",p2.init("薯条"))
+
+
+        // ====================   单例模式   ========================= //
+
+        //这种模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有单个对象被创建
+        //这个类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象
+        
+       class Single  {
+           constructor(){
+               this.state = false;
+               this.target = document.createElement("div");
+           }
+           init(){
+               if(!this.state){
+                   console.log(333)
+                   this.target.innerHTML = "我是唯一的单例"
+                   document.body.appendChild(this.target);
+                //    document.body.appendChild( document.createElement("div"));
+                   this.state = true;
+               }else{
+					alert("不能重复开启同一个窗口");
+				}
+           }
+       }
+       
+       let p3 = new Single();
+       console.log("单例模式 p3.init()设置",p3)
+
+
+       // ====================   观察者模式   ========================= //
+
+      //相当于给同一个主题添加了多个观察者，当主题状态改变，所有观察者的状态会对应进行更改
+
+       class Type{
+           constructor(name){
+            // this.target = target;
+            // this.name = name;
+            this.list = []
+           }
+           foreact(){
+            // console.log("ss")
+               this.list.forEach(item=>{
+                   
+                   console.log(item.name)
+               })
+           }
+       }
+
+       class Once{
+           constructor(type,name){
+               this.type = type;
+               this.name = name;
+               this.init();
+           }
+           init(){
+               this.type.list.push(this) //将实例对象添加到监听类对象里面
+           }
+       }
+
+       let ty = new Type();
+      
+       let r1 = new Once(ty,"快乐")
+       let r2 = new Once(ty,"雪碧")
+       let r3 = new Once(ty,"锤子")
+       ty.foreact()
+
+
+    </script>
+</body>
+</html>

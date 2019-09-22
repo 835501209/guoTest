@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1.原生数组去重
+        var arr = [15,15,3,26,8,26,26,4,2,5]  
+        // var brr = arr.sort((a,b)=>a-b);          //sort方法如果调用该方法时没有使用参数，将按字母顺序对数组中的元素进行排序，说得更精确点，是按照字符编码的顺序进行排序
+        // console.log(brr)
+        console.log(Array.from(new Set(arr)))
+        quchong(arr)
+        function quchong(arr){
+            for(i=0;i<arr.length;i++){
+                for(j=i+1;j<arr.length;j++){
+                   while(arr[i]===arr[j]){
+                        arr.splice(j,1)
+                    }
+                }
+            }
+        }
+        console.log(arr)
+    </script>
+</body>
+</html>

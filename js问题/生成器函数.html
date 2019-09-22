@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id='dian'>点点</button>
+    <script>
+        //生成器函数，每次遇到yield代码时停止执行,调用next()方法时继续执行
+        //调用next方法时，内部包含一个done属性用于判断当前生成器函数是否执行完毕，未执行完成的值均为false
+        let btn = document.getElementById('dian');
+        btn.onclick = function(){
+            // console.log(666)
+            // res.next();
+            console.log(res.next());
+    
+        }
+        function* sum(x){
+            console.log(1);
+            yield 50;
+            console.log(2);
+            yield 100;
+            console.log(3);
+            // return 150;
+            console.log('end');
+        }
+        var res = sum();//得到一个状态为suspended的对象{next()}
+        // res.next();//得到一个对象：{value:xx,done:false}
+        console.log(res);
+    
+    </script>
+</body>
+</html>

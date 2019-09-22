@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(name='guo',age,gender){
+      this.name = name;
+      this.age = age;
+      this.gender = gender;
+    }
+    Person.prototype = {
+    say(){console.log(`大家好，我叫${this.name}，欢迎跟大家交朋友`)}  
+    }
+    Object.defineProperty(Person.prototype,'constructor',{
+    configurable:true,
+    value:Person
+    });
+    let lemon = new Person('lemon',32,'女');
+
+    lemon.say();
+
+
+    //===============原型链继承============
+    function Man(name,age){
+    }
+    Man.prototype = new Person('akun');
+    let laoxie = new Man('laoxie',18,'男');
+    laoxie.say()
+    
+    
+    </script>
+</body>
+</html>

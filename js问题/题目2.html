@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="box">全民制作人们，大家好， 我是练习时长2年半的个人练习生前100名蔡徐坤，喜欢唱、跳、rap、篮球，Music！！！</div>
+    <script>
+    //js中搜索一个字符串中的特定字段加上样式
+        let box = document.querySelector(".box")
+        let str = box.innerHTML;
+        // console.log(str)
+        let stg = str.replace(/(?<=前)(\d+){1}(?=名)/ig,"<span style='color:red;'>$1</span>")
+        // console.log(stg)
+        box.innerHTML =stg
+    
+        
+
+        // // 笔试:
+        setTimeout(function(){
+            console.time();
+            console.log(1)
+            console.timeEnd()
+        },0);
+        new Promise(function(resolve){
+            console.time();
+            console.log(2);
+            console.timeEnd()
+            for(var i = 0; i < 10000; i++){
+                i == 99 && resolve();
+            };
+            console.time();
+            console.log(3)
+            console.timeEnd()
+        }).then(function(){
+            console.time();
+            console.log(4)
+            console.timeEnd()
+        });
+        console.time();
+        console.log(5);
+        console.timeEnd()
+    </script>
+</body>
+</html>

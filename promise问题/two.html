@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //promise对象的使用
+        var a=2
+        var p = new Promise(function(resolve, reject){
+    //做一些异步操作
+    // setTimeout(function(){
+
+        if(a==1){
+            resolve('随便什么数据');
+        }
+        else{
+
+            reject('失败了');
+        }
+        // console.log('执行完成');
+      
+    // }, );
+});
+
+
+new Promise(function(resolve, reject){
+    //自定义条件通过时执行
+    resolve('随便什么数据');
+    //自定义条件不成立时执行
+    reject('失败了');
+    })     
+
+
+console.log(p)
+    
+    
+    
+    </script>
+</body>
+</html>
