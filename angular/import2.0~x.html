@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>引入angular2.0~x.x版本</title>
+    <script src="../js/system.js"></script>
+    <script>
+        //设置模块加载规则
+        System.baseURL = document.baseURI;
+        System.config({
+            map: { traceur: "lib/traceur" },
+            traceurOptions: { annotations: true }
+        });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

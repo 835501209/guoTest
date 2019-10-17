@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>引入angular1.0版本</title>
+    <script src="../js/angular.js"></script>
+</head>
+
+<body>
+    <!-- 
+    Angularjs(1.0)的用法
+        I  .在一个有起始标签的元素开始标签内使用 ng-app来指定angularjs的作用范围
+        II .angularJS的表达式是双大括号 {{}} 里面可以显示变量,数学运算,执行方法
+        III.ng-model=“变量名” 在输入框内可以绑定一个变量,此变量前端输入的值和js代码中的值是双向绑定的,一个变了都变了,并且使用此变量的地方都发生改变
+        IV .ng-init=“变量名=‘变量值’” 一般加在body的起始标签内 初始化变量 也可以初始化方法 相当于onload方法 
+    -->
+
+    <!-- 1.直接 ng-app="" 指定作用范围 -->
+    <!-- <div ng-app="">
+        <input type="text" ng-model="name">
+        <p> {{name}}</p>
+    </div> -->
+
+
+    <!-- 2. ng-app="模块名" 需要先定义模块对象和控制器，模块对象必须有名字 -->
+    <div ng-app="guoApp" ng-controller="guoCtrl">
+        <p> {{firstName}}</p>
+        <p> {{lastName}}</p>
+        <div ng-click="sum()">{{num}}</div>
+    </div>
+
+
+    <script>
+        var app = angular.module('guoApp', []);
+        app.controller('guoCtrl', function ($scope) {
+            $scope.firstName = "John";
+            $scope.lastName = "Doe";
+            $scope.num = 3;
+            $scope.sum = function(){
+                $scope.num+=1;
+            };
+        });
+    </script>
+
+</body>
+
+</html>
