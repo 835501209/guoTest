@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CDN使用用例</title>
+    <!-- 1.使用官方提供的requirejs文件 -->
+    <script src="https://cdn.bootcss.com/require.js/2.3.6/require.js"></script>
+
+    <!-- 2.在此requirejs之后引入的js文件的requirejs模块都会被解析 -->
+    <script src="js/moduleC.js"></script>
+    <script>
+        requirejs(['./js/moduleA', './js/moduleB', './js/moduleD'], function (jq) {
+            console.log(a, b, d)
+        });
+    </script>
+
+    <!-- 3.解析时出现嵌套的多个requirejs，只有最外层requirejs模块生效，其余不解析 -->
+    <script>
+        requirejs(['./js/moduleA', './js/moduleB', './js/moduleC', './js/moduleD'], function (jq) {
+            console.log(a, b, c, d)    //报错！！！moduleC中使用了requirejs模块，导致moduleC无法解析
+        });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
