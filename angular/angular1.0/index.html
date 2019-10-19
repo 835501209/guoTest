@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>welcome to angular1.0</title>
+    <!-- <script src="../../js/angular.js"></script> -->
+    <script src="https://cdn.staticfile.org/angular.js/1.7.0/angular.min.js"></script>
+<script src="https://cdn.staticfile.org/angular.js/1.7.0/angular-route.min.js"></script>
+</head>
+
+<body>
+    <div ng-app="App" ng-controller="Ctrl">
+      <h1></h1>
+      <ul>
+          <li><a href="#!/akun">akun</a></li>
+          <li><a href="#!/apei">apei</a></li>
+          <li><a href="#!/asen">asen</a></li>
+          <li><a href="#!/ahao">ahao</a></li>
+      </ul>
+      <div ng-view></div>
+    </div>
+
+    <script>
+        let app = angular.module('App', ['ngRoute']);
+        app.controller('Ctrl', function ($scope) {
+            // $scope.sum = function(){
+            //     $scope.num+=1;
+            // };
+        });
+        app.config(['$routeProvider',function($routeProvider){
+            $routeProvider.when('/akun',{template:'我是akun'})
+            $routeProvider.when('/apei',{template:'我是apei'})
+            $routeProvider.when('/asen',{template:'我是asen'})
+            $routeProvider.when('/ahao',{template:'我是ahao'})
+        }])
+    
+    
+    </script>
+</body>
+
+</html>
