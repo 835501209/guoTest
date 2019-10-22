@@ -1,6 +1,5 @@
 //修改放大镜插件为ES6 类写法,摒弃依赖jQuery的特性，更加灵活
-//抛弃内联样式，将元素定义交给使用者
-
+//抛弃内联样式，将元素样式定义交给使用者
 
 class Fangda {
     constructor(data) {
@@ -13,7 +12,7 @@ class Fangda {
         this.fangda = ""
         this.min = ""
         this.img = ""
-        this.create(data);
+        // this.create(data);
     }
     create() {
         this.el = document.createElement('div');
@@ -30,6 +29,12 @@ class Fangda {
         this.img = this.computed();
         //事件
         this.big.addEventListener("mouseenter", () => {
+            if(this.radio == ""){
+                this.radio = this.big.clientWidth / this.move.clientWidth;
+            }
+            if(this.size == ""){
+                this.size = this.fangda.clientWidth * this.radio / this.big.clientWidth;
+            }
             this.move.style.display = "block";
             this.fangda.style.display = "block";
             this.big.addEventListener("mousemove", (e) => {
@@ -86,7 +91,7 @@ class Fangda {
     createMin() {
         let elc = document.createElement('div');
         elc.classList.add("g_min");
-        el.appendChild(elc);
+        this.el.appendChild(elc);
         return elc;
     }
     createBig() {
@@ -117,28 +122,50 @@ class Fangda {
         })
     }
     computed() {
-        setTimeout(() => {
-            this.radio = this.big.clientWidth / this.move.clientWidth;
-            this.size = this.fangda.clientWidth * this.radio / this.big.clientWidth;
-        }, 1000)
         var img = document.createElement("img");
         img.style = `
         position:absolute;`
         this.fangda.appendChild(img);
         return img;
     }
-    dataFetch(data) {
-        return Number(data.replace(/px/ig, ""));
-    }
 }
 
-// let fd = new Fangda({
-//     big: {
-//         width: '444px'
-//     },
-//     imgsrc:['images/g1.jpg','images/g2.jpg','images/g3.jpg','images/g4.jpg']
-// })
+//-------------  use  -------------//
+// var box = document.querySelector(".box");
+// let fd = new Fangda({ imgsrc:['images/g1.jpg','images/g2.jpg','images/g3.jpg','images/g4.jpg']})
+// box.appendChild(fd.create())
 
-// // console.log(fd)
-// console.log(fd.create())
 
+
+//---------- default CSS ----------//
+// .g_fangda{
+//     width:400px;
+//     height:400px;
+//     overflow: hidden;
+//     left:400px;
+//     top:0px;
+//     position: absolute;
+// }
+// .g_big{
+//     width:400px;
+//     height:400px;
+// }
+// .g_big .g_big_img{
+//     width:400px;
+//     height:400px;
+//     position: absolute;
+// }
+// .g_min{
+//     width:400px;
+//     height:100px;
+// }
+// .g_min .g_min_img{
+//     width:100px;
+//     height:100px;
+// }
+// .g_move{
+//     width:200px;
+//     height:200px;
+//     position: absolute;
+//     z-index:3;
+// }
