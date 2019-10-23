@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue的$nextTick函数</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="vue" >
+        <p ref="vue"></p>
+    </div>
+    <script>
+        // $nextTick：回调函数延迟在下一次DOM更新数据后调用
+        new Vue({
+            el:'#vue',
+            created(){
+                // this.$refs.vue.innerText = "renderdatail"; //在生命周期函数created时，DOM操作时无效的，报错
+
+                this.$nextTick(function(){                    //对于created函数，与之对应的下一次DOM操作是挂载阶段
+                    this.$refs.vue.innerText = "renderdatail"; 
+                })
+            },
+        })
+    
+    </script>
+</body>
+</html>

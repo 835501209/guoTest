@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+    }
+    .g_fangda{
+        width:400px;
+        height:400px;
+        overflow: hidden;
+        left:400px;
+        top:0px;
+        position: absolute;
+    }
+    .g_big{
+        width:400px;
+        height:400px;
+    }
+    .g_big .g_big_img{
+        width:400px;
+        height:400px;
+        position: absolute;
+    }
+    .g_min{
+        width:400px;
+        height:100px;
+    }
+    .g_min .g_min_img{
+        width:100px;
+        height:100px;
+    }
+    .g_move{
+        width:200px;
+        height:200px;
+        position: absolute;
+        z-index:3;
+    }
+    
+    
+    </style>
+    <script src="./js/magnifying-glass3.1.1.js"></script>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+<script>
+    // var box = document.querySelector(".box");
+    // let fd = new Fangda({
+    
+    //     big: {
+    //     },
+    //     move:{
+    //         background:"#ccc",
+    //         opacity:0.7
+    //     },
+    //     imgsrc: ['images/g1.jpg', 'images/g2.jpg', 'images/g3.jpg', 'images/g4.jpg']
+    // })
+
+    // box.appendChild(fd.create())
+
+
+    var box = document.querySelector(".box");
+    let fd = new Fangda({
+        imgsrc: ['images/g1.jpg', 'images/g2.jpg', 'images/g3.jpg', 'images/g4.jpg']
+    })
+
+    box.appendChild(fd.create())
+
+
+</script>
+
+</html>
