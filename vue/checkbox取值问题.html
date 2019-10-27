@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id='myApp'>
+           <input type="checkbox" v-model="msg.length==3" value="kk "@click="no(msg.length==3)">{{kk}}<br>
+
+           <input type="checkbox" v-model="msg" value="angular" @click="all()">angular<br>
+           <input type="checkbox" v-model="msg" value="react" @click="all()">react<br>
+           <input type="checkbox" v-model="msg" value="vue" @click="all()">vue<br>
+           {{msg}}
+         </div>
+    <script>
+        new Vue({
+            el: "#myApp",
+            data() {
+                return {
+                    msg: [],
+                    kk: false
+                }
+            },
+            methods: {
+                all() {
+                    // this.$nextTick(function () {
+                    //     console.log(22)
+                    //     if (this.msg.length != 3 &&this.msg ==2) {
+                    //         this.kk = true
+                    //     }
+                    //     else if (this.msg.length == 3) {
+                    //         this.kk = false
+                    //     }
+                    // })
+
+                },
+                no(val){
+                  console.log(val)
+                if(!val){
+                    this.msg = [ "react", "vue", "angular" ]
+                }
+                else if (val){
+                    this.msg = []
+                }
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
