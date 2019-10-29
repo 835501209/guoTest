@@ -27,53 +27,8 @@ class Fangda {
         //插入图片判断
         this.judge(this.big, this.min);
         this.img = this.computed();
-        //事件
-        this.big.addEventListener("mouseenter", () => {
-            if(this.radio == ""){
-                this.radio = this.big.clientWidth / this.move.clientWidth;
-            }
-            if(this.size == ""){
-                this.size = this.fangda.clientWidth * this.radio / this.big.clientWidth;
-            }
-            this.move.style.display = "block";
-            this.fangda.style.display = "block";
-            this.big.addEventListener("mousemove", (e) => {
-                var xx = e.pageX - this.big.offsetLeft - this.move.clientWidth / 2
-                var yy = e.pageY - this.big.offsetTop - this.move.clientHeight / 2;
-                if (xx + this.move.clientWidth >= this.big.clientWidth) {
-                    xx = this.big.clientWidth - this.move.clientWidth;
-                }
-                if (xx <= 0) {
-                    xx = 0;
-                }
-                if (yy + this.move.clientHeight >= this.big.clientHeight) {
-                    yy = this.big.clientHeight - this.move.clientHeight;
-                }
-                if (yy <= 0) {
-                    yy = 0;
-                }
-                this.img.style.left = -this.size * xx + "px";
-                this.img.style.top = -this.size * yy + "px";
-                this.move.style.left = xx + "px";
-                this.move.style.top = yy + "px"
-            })
-        })
-        this.big.addEventListener("mouseleave", () => {
-            this.move.style.display = "none";
-            this.fangda.style.display = "none";
-        })
-        this.min.addEventListener('click', (e) => {
-            var num = e.target.dataset.imgId;
-            for (var i = 0; i < this.big.getElementsByTagName("img").length; i++) {
-                if (i == num) {
-                    this.big.getElementsByTagName("img")[num].style.display = "block";
-                    this.img.src = this.big.getElementsByTagName("img")[num].src
-                }
-                else {
-                    this.big.getElementsByTagName("img")[i].style.display = "none";
-                }
-            }
-        })
+        //监听事件
+        this.listen();
         return this.el;
     }
     createMove() {
@@ -127,6 +82,54 @@ class Fangda {
         position:absolute;`
         this.fangda.appendChild(img);
         return img;
+    }
+    listen(){
+        this.big.addEventListener("mouseenter", () => {
+            if(this.radio == ""){
+                this.radio = this.big.clientWidth / this.move.clientWidth;
+            }
+            if(this.size == ""){
+                this.size = this.fangda.clientWidth * this.radio / this.big.clientWidth;
+            }
+            this.move.style.display = "block";
+            this.fangda.style.display = "block";
+            this.big.addEventListener("mousemove", (e) => {
+                var xx = e.pageX - this.big.offsetLeft - this.move.clientWidth / 2
+                var yy = e.pageY - this.big.offsetTop - this.move.clientHeight / 2;
+                if (xx + this.move.clientWidth >= this.big.clientWidth) {
+                    xx = this.big.clientWidth - this.move.clientWidth;
+                }
+                if (xx <= 0) {
+                    xx = 0;
+                }
+                if (yy + this.move.clientHeight >= this.big.clientHeight) {
+                    yy = this.big.clientHeight - this.move.clientHeight;
+                }
+                if (yy <= 0) {
+                    yy = 0;
+                }
+                this.img.style.left = -this.size * xx + "px";
+                this.img.style.top = -this.size * yy + "px";
+                this.move.style.left = xx + "px";
+                this.move.style.top = yy + "px"
+            })
+        })
+        this.big.addEventListener("mouseleave", () => {
+            this.move.style.display = "none";
+            this.fangda.style.display = "none";
+        })
+        this.min.addEventListener('click', (e) => {
+            var num = e.target.dataset.imgId;
+            for (var i = 0; i < this.big.getElementsByTagName("img").length; i++) {
+                if (i == num) {
+                    this.big.getElementsByTagName("img")[num].style.display = "block";
+                    this.img.src = this.big.getElementsByTagName("img")[num].src
+                }
+                else {
+                    this.big.getElementsByTagName("img")[i].style.display = "none";
+                }
+            }
+        })
     }
 }
 
