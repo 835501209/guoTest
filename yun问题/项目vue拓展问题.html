@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue拓展原理</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">{{muour}}</div>
+    <script>
+        //原型对象
+        Guo = function () {
+            window.Guo = {}
+            //写一些公用的方法和属性
+            return Guo
+        }
+
+
+        //给原型对象添加vue拓展方法
+        Guo.VueGuo = function () {
+            return function (sp, overrides) {
+                var sb = {};
+
+                //合并拓展属性到即将实例化的对象中
+                Guo.assign(true, sb, sp, overrides);
+
+                //onReadyRun为拓展属性，为true,未知作用，秀操作吧...
+                if (sb.onReadyRun) {
+
+                    //实例化vue函数
+                    function run(Vue) {
+                        if (typeof sb.beforeReady == 'function') sb.beforeReady(Vue);
+                        return new Vue(sb);
+                    }
+
+                    //模块化开发时，此时再按需引入vue源文件
+                    if (typeof define === 'function' && define.amd) {
+                        return require(['vue'], function (Vue) {
+                            return sb = run(Vue), sb;
+                        });
+                    } 
+
+                    //非模块化开发时，直接执行实例化vue
+                    else {
+                        return run(Vue);
+                    }
+                }
+
+                //压根不会执行这里
+                else {
+                    return sb;
+                }
+            }
+        }()
+
+
+        //原型对象上的合并拓展属性方法
+        Guo.assign = function () {
+            var i = 1,
+                target = arguments[0] || {},
+                deep = false,
+                length = arguments.length,
+                name, options, src, copy, isArray, clone;
+            if (typeof target === 'boolean') {
+                deep = target;
+                target = arguments[1] || {};
+                i++;
+            }
+            if (typeof target !== 'object' && !(typeof target === 'function')) {
+                target = {};
+            }
+            if (i === length) {
+                return target;
+            }
+            for (; i < length; i++) {
+                //反正就是遍历传入的对象和拓展对象里的值或方法，合并到target这个对象里
+                if (typeof (options = arguments[i]) != null) {
+                    for (name in options) {
+                        src = target[name];
+                        copy = options[name];
+                        isArray = Array.isArray(copy);
+                        if (deep && copy && (typeof copy === 'object' || isArray)) {
+                            if (isArray) {
+                                isArray = false;
+                                clone = src && Array.isArray(src) ? src : [];
+                            } else {
+                                clone = src && typeof src === 'object' ? src : {};
+                            }
+                            target[name] = Guo.assign(deep, clone, copy);
+                        } else if (copy !== undefined) {
+                            target[name] = copy;
+                        }
+                    }
+                }
+            }
+            return target;
+        };
+
+
+        //拓展对象模块，里面可封装一些公用的方法和属性
+        (function (factory) {
+            VuePage = factory();
+        })(function () {
+            Funny = {
+                onReadyRun: true,
+                //出招吧
+            }
+            return Funny;
+        })
+
+
+        //拓展使用举例，Guo为某个原型对象，VueGuo为Guo上的一个拓展方法，
+         //VuePage为拓展对象，里面的方法和属性都会拓展到当前的vue实例中
+         Guo.VueGuo(VuePage, {
+            el: "#app",
+            data: {
+                muour: 'Guo'
+            }
+        })
+
+       
+    </script>
+</body>
+
+</html>
