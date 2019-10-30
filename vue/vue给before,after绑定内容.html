@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,22 +8,35 @@
     <title>vue给before,after绑定内容</title>
     <script src="../js/vue.js"></script>
     <style>
-    .box::before{
-        content:''
-    }
+        .box{
+            width:100%;
+            height:60px;
+        }
+        .box::before {
+            content: attr(text-length);
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            color:#000;
+        }
     </style>
 </head>
+
 <body>
-    <input type="text" v-model="len" :text-length="len.length">
-    <div class="box"></div>
+    <div id="app">
+        <input type="text" v-model="len" >
+        <div class="box" :text-length="len.length">
+        </div>
+    </div>
     <script>
 
         new Vue({
-            el:'#app',
-            data:{
-                len:""
+            el: '#app',
+            data: {
+                len: ""
             }
         })
     </script>
 </body>
+
 </html>
