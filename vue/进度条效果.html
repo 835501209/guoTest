@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多项进度条</title>
+    <style>
+        .vue-progress-bar.default-theme .vue-progress-bar__outer {
+            height: 8px;
+            background: rgba(232, 232, 232, 1);
+            border-radius: 6px;
+            margin-bottom:5px;
+        }
+
+        .vue-progress-bar.default-theme .vue-progress-bar__outer .vue-progress-bar__inner {
+            background: rgba(248, 210, 62, 1);
+            height: 8px;
+            border-radius: 6px;
+        }
+    </style>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="vue-progress-bar default-theme">
+            <div class="vue-progress-bar__outer" v-for="item of list">
+                <div class="vue-progress-bar__inner" :style="barStyle(item)"></div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                label: String,
+                text: String,
+                percentage: 20,
+                list: [
+                    { percentage: 20 },
+                    { percentage: 30 },
+                    { percentage: 40 },
+                    { percentage: 50 },
+                ]
+            },
+            methods: {
+                barStyle(val) {
+                    const style = {};
+                    style.width = val.percentage + '%';
+                    return style;
+                }
+            }
+
+        })
+
+
+    </script>
+</body>
+
+</html>
