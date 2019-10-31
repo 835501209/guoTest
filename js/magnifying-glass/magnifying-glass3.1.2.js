@@ -24,8 +24,9 @@ class Fangda {
         this.fangda = this.createFangda();
         //构建小盒子
         this.min = this.createMin();
-        //插入图片判断
-        this.judge(this.big, this.min);
+        //插入图片
+        this.elementImgBig();
+        this.elementImgMin();
         this.img = this.computed();
         //监听事件
         this.listen();
@@ -55,31 +56,26 @@ class Fangda {
         this.el.appendChild(elc);
         return elc;
     }
-    judge(el, elc) {
-        this.elementImgBig(el, this);
-        this.elementImgMin(elc, this);
-    }
-    elementImgBig(el, data) {
-        data.imgsrc.forEach((item => {
+    elementImgBig() {
+        this.imgsrc.forEach((item => {
             var img = document.createElement("img");
             img.src = item;
             img.classList.add("g_big_img");
-            el.appendChild(img)
+            this.big.appendChild(img)
         }))
     }
-    elementImgMin(el, data) {
-        data.imgsrc.forEach((item, idx) => {
+    elementImgMin() {
+        this.imgsrc.forEach((item, idx) => {
             var img = document.createElement("img");
             img.src = item;
             img.dataset.imgId = idx
             img.classList.add("g_min_img");
-            el.appendChild(img)
+            this.min.appendChild(img)
         })
     }
     computed() {
         var img = document.createElement("img");
-        img.style = `
-        position:absolute;`
+        img.style = `position:absolute;`
         this.fangda.appendChild(img);
         return img;
     }

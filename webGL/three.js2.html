@@ -37,11 +37,6 @@
                 camera.up.x = 0;
                 camera.up.y = 0;
                 camera.up.z = 1;
-                // camera.lookAt({
-                //     x : 0,
-                //     y : 0,
-                //     z : 0
-                // });
                 camera.lookAt(0,0,0);
             }
 
@@ -65,10 +60,12 @@
                 var color1 = new THREE.Color( 0x444444 ), color2 = new THREE.Color( 0xFF0000 );
 
                 // 线的材质可以由2点的颜色决定
-                var p1 = new THREE.Vector3( -100, 0, 100 );
-                var p2 = new THREE.Vector3(  100, 0, -100 );
+                var p1 = new THREE.Vector3( -0, 0, 200 );
+                var p2 = new THREE.Vector3(  -0, 800, 0 );
+                var p3 = new THREE.Vector3(  300, 0, 0 );
                 geometry.vertices.push(p1);
                 geometry.vertices.push(p2);
+                geometry.vertices.push(p3);
                 geometry.colors.push( color1, color2 );
 
                 var line = new THREE.Line( geometry, material, THREE.LineSegments );
@@ -84,7 +81,7 @@
                 renderer.clear();
                 renderer.render(scene, camera);
             }
-
+            console.log(THREE);
         </script>
     </head>
 
