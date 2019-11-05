@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>流程图</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .process {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 460px;
+            margin-top: 100px;
+        }
+
+        .process-step {
+            width: 72px;
+            height: 24px;
+            background: rgba(255, 255, 255, 1);
+            border-radius: 24px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .process-stepActive {
+            width: 104px;
+            height: 40px;
+            border-radius: 24px;
+            background: #CEC198;
+        }
+        .process-stepFinish{
+            width: 72px;
+            height: 24px;
+            background: #CEC198;
+        }
+
+        .process-step span {
+            position: absolute;
+            bottom: -20px;
+             width: 100px; 
+            text-align: center; 
+            font-size: 12px;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: rgba(153, 153, 153, 1);
+            line-height: 16px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 22px);
+        }
+
+        .vue-progress-bar__outer {
+            height: 6px;
+            background: rgba(255, 255, 255, 1);
+            border-radius: 6px;
+            width: 44px !important;
+            transform: scaleX(1.2);
+            z-index: 1;
+        }
+
+        .vue-progress-bar__outer .vue-progress-bar__inner {
+            background: #D1C59D;
+            height: 6px;
+            border-radius: 6px;
+            width: 50%;
+        }
+        .vue-progress-bar__outer .inner-over{
+            width:100%;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="process">
+        <div class="process-step process-stepFinish">
+            <span>拼采书达到50</span></div>
+        <div class="vue-progress-bar__outer">
+            <div class="vue-progress-bar__inner inner-over"></div>
+        </div>
+        <div class="process-step process-stepFinish"><span>拼采书达到100</span></div>
+        <div class="vue-progress-bar__outer">
+            <div class="vue-progress-bar__inner inner-over"></div>
+        </div>
+        <div class="process-step process-stepActive"><span>拼采书达到300</span></div>
+        <div class="vue-progress-bar__outer">
+            <div class="vue-progress-bar__inner"></div>
+        </div>
+        <div class="process-step"><span>拼采书达到500</span></div>
+    </div>
+</body>
+
+</html>
