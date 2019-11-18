@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>React</title>
+    <script src="../js/react.development.js"></script>
+    <script src="../js/react-dom.development.js"></script>
+    <script src="../js/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <!-- <script type="text/babel" src="./react.js"></script> -->
+    <script src="react.js" type="text/babel">
+        class Akun extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    name: 'akun',
+                }
+            }
+            render() {
+                return <div>{this.state.name}</div>
+            }
+        }
+        class Guo extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    name: 'guo'
+                }
+            }
+            render() {
+                return <div>
+                    <h3>{this.state.name}</h3>
+                    <Akun />
+                </div>
+            }
+        }
+
+        ReactDOM.render(
+            <div>
+                <Guo />
+            </div>,
+            document.querySelector('#app')
+        )
+    </script>
+</body>
+
+</html>
