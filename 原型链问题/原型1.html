@@ -44,8 +44,13 @@
                 return new jQuery.fn.init( selector, context );
             };
             gQuery.fn = gQuery.prototype ={
-
+                version:version,
+                constructor:gQuery,
             }
+            gQuery.extend = gQuery.fn.extend = function (){
+                
+            }
+
         })
     </script>
 </body>
