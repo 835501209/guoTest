@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>背景颜色渐变</title>
+    <style>
+        div {
+            background: #00cdac;
+            /* background: linear-gradient(#00cdac,#3cba92); */
+            width: 100%;
+            height: 180px;
+            line-height:180px;
+            font-size: 40px;
+            text-align: center;
+            color:#fff;
+            font-weight: 600;
+            /* transition: background 2s; */
+            animation: guo  6s  linear infinite alternate-reverse;
+        }
+
+        /* #667eea,#764ba2,#00cdac,#3cba92 */
+        /* div:hover {
+            background: #764ba2;
+        } */
+
+        @keyframes  guo{
+            0% {
+                background: #00cdac;
+                /* background: linear-gradient(#00cdac,#3cba92); */
+            }
+
+            33% {
+                background: #3cba92;
+                 /* background: linear-gradient(#3cba92,#667eea); */
+            }
+
+            66% {
+                background: #667eea;
+                 /* background: linear-gradient(#667eea,#764ba2); */
+            }
+
+            100% {
+                background: #764ba2;
+                /* background: linear-gradient(#00cdac,#667eea#3cba92 #764ba2); */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div>angular</div>
+</body>
+
+</html>
