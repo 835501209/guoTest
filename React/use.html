@@ -16,7 +16,7 @@
 
     </div>
     <!-- <script type="text/babel" src="./react.js"></script> -->
-    <script src="react.js" type="text/babel">
+    <script type="text/babel">
         class Akun extends React.Component {
             constructor() {
                 super();
@@ -32,8 +32,33 @@
             constructor() {
                 super();
                 this.state = {
-                    name: 'guo'
+                    name: 'guo',
+                    num:1
                 }
+            }
+            componentWillMount(){
+                console.log("begin",this.state.num)
+                
+                this.setState({
+                    num:this.state.num++
+                },()=>{
+                    console.log("1",this.state.num)
+                })
+                this.setState({
+                    num:this.state.num++
+                },()=>{
+                    console.log("2",this.state.num)
+                })
+                this.setState({
+                    num:this.state.num++
+                },()=>{
+                    console.log("3",this.state.num)
+                })
+                this.setState({
+                    num:this.state.num++
+                },()=>{
+                    console.log("4",this.state.num)
+                })
             }
             render() {
                 return <div>
