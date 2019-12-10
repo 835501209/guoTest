@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>三角形颜色渐变</title>
+    <style>
+        .tri-test {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(-40deg, #8b156f, #18214c);
+            background: -webkit-linear-gradient(-40deg, #8b156f, #18214c);
+            background: -moz-linear-gradient(-40deg, #8b156f, #18214c);
+            width: 80px;
+            height: 200px;
+            margin: 50px auto;
+        }
+
+        .tri-test:before,
+        .tri-test:after {
+            position: absolute;
+            content: '';
+        }
+
+        .tri-test:before,
+        .tri-test:after {
+            border-left: 40px solid transparent;
+            border-right: 40px solid transparent;
+            border-bottom: 200px solid #222;
+        }
+
+        .tri-test:before {
+            margin-left: -40px;
+        }
+
+        .tri-test:after {
+            margin-left: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='tri-test'></div>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>area标签</title>
+    <style>
+        map{
+            /* width:200px;
+            height:200px; */
+        }
+        /* map .box1{
+            background: red;
+        }
+        map .box2{
+            background: red;
+        }
+        map .box3{
+            background: red;
+        } */
+        img{
+            background:red;
+        }
+    </style>
+</head>
+
+<body>
+        <img src="planets.gif" width="145" height="126" alt="Planets" usemap="#planetmap" style="display: inline-block;">
+    <map name="planetmap">
+        <area class="box1" shape="rect" coords="0,0,145,63" alt="Sun">
+        <area class="box2" shape="circle" coords="90,58,3" alt="Mercury">
+        <area class="box3" shape="circle" coords="124,58,8" alt="Venus">
+    </map>
+</body>
+
+<script>
+    var box1 = document.querySelector('.box1');
+    var box2 = document.querySelector('.box2');
+    var img = document.querySelector('img');
+    console.log(img)
+    box1.addEventListener("mouseenter",()=>{
+        img.style = "background:green;display: block;"
+    })
+
+</script>
+
+</html>
