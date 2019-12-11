@@ -43,16 +43,36 @@
         position: absolute;
         z-index:3;
     }
-    
+    .goods{
+        position: fixed;
+        top:300px;
+        left:10px;
+        width:20px;
+        height:20px;
+        background:red;
+    }
+    .car{
+        position: fixed;
+        top:700px;
+        right:400px;
+        width:20px;
+        height:20px;
+        background:blue;
+    }
     
     </style>
     <script src="./js/magnifying-glass/magnifying-glass3.1.2.js"></script>
+    <script src="./js/parabola/parabola.js"></script>
 </head>
 
 <body>
-    <div class="box"></div>
+    <!-- <div class="box"></div> -->
+    <div class="goods"></div>
+    <div class="car"></div>
 </body>
 <script>
+
+    //放大镜demo
     // var box = document.querySelector(".box");
     // let fd = new Fangda({
     
@@ -68,11 +88,18 @@
     // box.appendChild(fd.create())
 
 
-    var box = document.querySelector(".box");
-    let fd = new Fangda({
-        imgsrc: ['images/g1.jpg', 'images/g2.jpg', 'images/g3.jpg', 'images/g4.jpg']
-    })
-    box.appendChild(fd.create())
+    // var box = document.querySelector(".box");
+    // let fd = new Fangda({
+    //     imgsrc: ['images/g1.jpg', 'images/g2.jpg', 'images/g3.jpg', 'images/g4.jpg']
+    // })
+    // box.appendChild(fd.create())
+
+
+    //飞入购物车demo
+    var goods = document.querySelector(".goods");
+    var car = document.querySelector(".car");
+    let para = new Parabola (goods,car);
+    para.init();
 
 
 </script>
