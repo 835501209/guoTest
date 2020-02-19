@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        
+        data=['当天全省新增确诊病例26例','新增出院38例','新增确诊病例中','深圳市7例','广州市4例','惠州市3例','中山市2例','佛山市2例','东莞市2例','珠海市1例','肇庆市1例','韶关市1例','茂名市1例','揭阳市1例','江门市1例','另有疑似病例148例','有3093名密切接触者正在接受医学观察']
+        console.log(data)
+        var arr = []
+
+        for (i=0;i<data.length;i++){
+            var a = data[i].match(/\D+(?=\d+例)/ig)
+            var b = data[i].match(/\d+例/ig)
+           var obj = {'city':a,'num':b}
+            arr.push(obj)
+        }
+        console.log('数据',arr)
+    </script>
+</body>
+</html>
