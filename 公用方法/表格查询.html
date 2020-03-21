@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格查询</title>
+</head>
+
+<body>
+    <script>
+
+        let list = [
+            {
+                id: '1',
+                name: 'jack',
+                age: '18',
+                color: 'green',
+                brithday: '20200321',
+                gender: 'female',
+            },
+            {
+                id: '2',
+                name: 'Tom',
+                age: '20',
+                color: 'red',
+                brithday: '20200323',
+                gender: 'fale',
+            },
+            {
+                id: '3',
+                name: 'fireman',
+                age: '200',
+                color: 'blue',
+                brithday: '20190311',
+                gender: 'male',
+            },
+            {
+                id: '1',
+                name: 'fireman',
+                age: '200',
+                color: 'blue',
+                brithday: '20190311',
+                gender: 'male',
+            }
+        ]
+        let keylist = {
+            id: '1',
+            name: 'jack',
+        }
+        // if (!Array.isArray) 
+        // let aaa = [1,2,3]
+        // console.log("cs:",Array.isArray(keylist))
+        FormSearch(keylist, list)
+        // FormSearch( list,keylist)
+        function FormSearch(arg, keyword) {
+            let result = arg
+            if (Array.isArray(arg)) {
+                if (!Array.isArray(keyword)) {
+                    for (let key in keyword) {
+                        result = result.filter(item => item[key] == keyword[key])
+                    }
+                    return result
+                }
+                else {
+                    console.warn("error")
+                }
+            }
+            else {
+                console.warn("error")
+            }
+        }
+
+    </script>
+</body>
+
+</html>
