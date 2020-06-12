@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../js/vue.js"></script>
+  <!-- 引入样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <!-- 引入组件库 -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <title>select组件值错误问题</title>
+</head>
+
+<body>
+  <div id="app">
+    <el-select v-model="value" placeholder="请选择" @change="changeValue">
+      <el-option v-for="item in lists" :key="item.value" :label="item.label" :value="item.value">
+      </el-option>
+    </el-select>
+  </div>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        value: '',
+        lists: [],
+        data: [{ value: '4077', label: '选项1' }, { value: '6089', label: '选项2' }, { value: '8852', label: '选项3' }],
+      },
+      created(){
+        setTimeout(()=>{
+          this.value = this.data[0].value
+          this.lists = this.data
+        },3000)
+      },
+      methods: {
+        changeValue() {
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

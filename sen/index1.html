@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    new Ext.tip.ToolTip({
+      target: me.lookup('mine').el,
+      html: '查看我的',
+      anchor: 'top',
+      title: '提示',
+      width: 200,
+      autoHide: false,
+      closable: true,
+      autoShow: true,
+      dockedItems: [{
+        xtype: 'toolbar',
+        dock: 'bottom',
+        items: ['->', {
+          xtype: 'button',
+          text: '我知道了',
+          handler: function () {
+            this.ownerCt.ownerCt.close();
+          }
+        }]
+      }]
+    })
+
+
+  </script>
+</body>
+
+</html>
